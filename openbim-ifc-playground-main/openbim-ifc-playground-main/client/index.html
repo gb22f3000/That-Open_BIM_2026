@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viewer</title>
+  </head>
+  <body>
+    <h1>fragment streamer</h1>
+
+    <p>
+      Configure which model to load by changing <code>MODEL_UUID</code> in
+      <code>client/src/viewer.ts</code>.
+    </p>
+
+    <ul id="modelList"></ul>
+
+    <form id="modelForm">
+      <label for="id">Model ID:</label>
+      <input type="text" id="id" name="id" value="LHS10IpZ" />
+      <input type="submit" value="Load model" />
+    </form>
+
+    <div id="viewerContainer"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+.select-box {
+    border: 1px dashed rgba(85, 170, 255, 0.75);
+    position: fixed;
+}

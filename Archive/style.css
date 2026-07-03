@@ -1,0 +1,375 @@
+/* NBIM Modern UI Theme - Light Mode */
+:root {
+  /* Light Mode Color Palette */
+  --bg-dark: #f8f9fa;
+  --bg-darker: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  
+  --primary: #2563eb;
+  --primary-glow: rgba(37, 99, 235, 0.3);
+  --accent: #0891b2;
+  --accent-glow: rgba(8, 145, 178, 0.3);
+  --success: #059669;
+  --danger: #dc2626;
+  --warning: #d97706;
+  
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  
+  --border-glass: rgba(0, 0, 0, 0.1);
+  --shadow-glass: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Ensure root takes full space and handles stacking */
+#root {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 10; /* Above the legacy container */
+  pointer-events: auto; /* Ensure clicks work */
+}
+
+/* Legacy container from main.js */
+#container {
+  /* Let main.js control positioning (absolute) */
+  /* position: fixed !important; REMOVED to allow embedding */
+  /* top: 0; left: 0; width: 100vw; height: 100vh; REMOVED */
+  
+  /* Allow main.js to set z-index */
+  /* z-index: 0; REMOVED */
+  
+  /* Allow main.js to set pointer-events */
+  /* pointer-events: none; REMOVED */
+}
+
+/* When we want to interact with the 3D viewer, we need pointer events */
+#container.interactive {
+  pointer-events: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-main);
+  background-color: #f3f4f6;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Glassmorphism Utilities - Light Mode */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Modern Button Styles */
+.btn-modern {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-modern:active {
+  transform: translateY(0);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Layout Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-modern {
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Legacy ID support */
+#container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* BIM Controls - Fixed Split Layout */
+.bim-controls-left {
+  position: fixed !important;
+  left: 80px !important;
+  top: 80px !important;
+  bottom: 20px !important;
+  width: 320px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+  z-index: 998 !important;
+  display: none !important;
+  overflow-y: auto !important;
+  color: #0f172a !important;
+}
+
+.bim-controls-right {
+  position: fixed !important;
+  right: 20px !important;
+  top: 80px !important;
+  bottom: 20px !important;
+  width: 380px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+  z-index: 998 !important;
+  display: none !important;
+  overflow-y: auto !important;
+  color: #0f172a !important;
+}
+
+.bim-controls-visible .bim-controls-left,
+.bim-controls-visible .bim-controls-right {
+  display: block !important;
+}
+
+.bim-controls-left bim-panel-section,
+.bim-controls-right bim-panel-section {
+  background: #f8f9fa !important;
+  margin-bottom: 12px !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+}
+
+.bim-controls-left bim-label,
+.bim-controls-right bim-label {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-shadow: none !important;
+}
+
+.bim-controls-left bim-button,
+.bim-controls-right bim-button {
+  background: #e5e7eb !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+}
+
+.bim-controls-left bim-button:hover,
+.bim-controls-right bim-button:hover {
+  background: #a78bfa !important;
+  color: #ffffff !important;
+  border-color: #8b5cf6 !important;
+}
+
+.bim-controls-left bim-color-input,
+.bim-controls-left bim-number-input,
+.bim-controls-right bim-color-input,
+.bim-controls-right bim-number-input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 500 !important;
+}
+
+/* Hide old options menu */
+.options-menu {
+  display: none !important;
+}
+
+.options-menu bim-color-input,
+.options-menu bim-number-input {
+  background: #ffffff !important;
+  color: #1e293b !important;
+}
+
+.options-menu-visible {
+  display: block !important;
+}
+
+.phone-menu-toggler {
+  position: fixed !important;
+  top: 80px !important;
+  right: 390px !important;
+  z-index: 1000 !important;
+  background: rgba(59, 130, 246, 0.9) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  color: white !important;
+  border: 1px solid var(--border-glass) !important;
+  display: none !important;
+}
+
+.phone-menu-toggler-visible {
+  display: block !important;
+}
+
+/* Custom spacing */
+bim-panel-section {
+  margin-bottom: 12px;
+}
+
+bim-label {
+  font-size: 13px;
+  color: #333;
+}
+
+/* Model item styling */
+.model-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.model-item:last-child {
+  border-bottom: none;
+}
+
+.model-item bim-label {
+  flex: 1;
+  font-size: 12px;
+}
+
+/* Metadata panel styling */
+#metadata-panel {
+  margin-top: 12px;
+}
+
+#metadata-content {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  line-height: 1.4;
+}
+
+#metadata-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#metadata-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+#metadata-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+#metadata-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Metadata property styling */
+.metadata-property {
+  margin-bottom: 8px;
+  padding: 6px;
+  border-left: 3px solid #2196F3;
+  background: rgba(33, 150, 243, 0.05);
+  border-radius: 0 4px 4px 0;
+}
+
+.metadata-property-name {
+  color: #1976D2;
+  font-weight: bold;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.metadata-property-type {
+  background: #E3F2FD;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 10px;
+  color: #1565C0;
+  display: inline-block;
+}
+
+.metadata-property-value {
+  margin-top: 4px;
+  word-break: break-all;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  background: #F5F5F5;
+  padding: 4px;
+  border-radius: 2px;
+  font-size: 11px;
+  white-space: pre-wrap;
+}
