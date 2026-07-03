@@ -1,0 +1,9 @@
+# Dependencies (regenerated via npm install)
+node_modules/
+
+# AWS IoT private keys — never commit credentials
+*.pem.key
+*-private.pem.key
+
+# Local logs
+*.log

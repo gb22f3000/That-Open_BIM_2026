@@ -1,0 +1,31 @@
+{
+  "name": "minimal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "vite --port 8080",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "prettier src/ --write"
+  },
+  "devDependencies": {
+    "@types/three": "^0.163.0",
+    "@types/wicg-file-system-access": "^2023.10.5",
+    "prettier": "^3.2.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "packageManager": "npm@10.5.1+sha256.06b9421a6b708ed6b6c0840e54729851e067b45ad911b192ebee2cb03b0adef2",
+  "dependencies": {
+    "bim-fragment": "^1.5.0",
+    "consola": "^3.2.3",
+    "nanotar": "^0.1.1",
+    "openbim-components": "^1.5.0",
+    "three": "^0.160.1",
+    "web-ifc": "^0.0.53"
+  }
+}
