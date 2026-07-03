@@ -33,6 +33,8 @@ AI_Arch_Des_EDX/
 | `04_desarchdev_proposal.md` | DesArchdev AI tool proposal and ethics |
 | `05_architectural_quality_and_ai_applications.md` | Quality assessment dataset + AI application catalog |
 | `06_research_references_elaborated.md` | Expanded research paper summaries with methods and relevance |
+| `07_ai_applications_master_guide.md` | **AI applications catalog** — all 12 applications with algorithms and papers |
+| `applications/*.md` | **Per-application detailed notes** (A1–A6, B1, B3–B6, B8) |
 
 ## Notebook Guides (`insights/notebooks/`)
 
@@ -73,6 +75,14 @@ data/beec_dataset/
 Download from [Kaggle: Modified Swiss Dwellings](https://www.kaggle.com/datasets/caspervanengelenburg/modified-swiss-dwellings) and place `.pickle` files in:
 ```
 data/msd_graphs/
+```
+
+## Research Papers (`papers&journals/`)
+
+10 open-access PDFs downloaded (arXiv, CVF, author pages). See [`papers&journals/README.md`](papers&journals/README.md) for the full manifest.
+
+```bash
+python scripts/download_papers.py   # re-download open-access papers
 ```
 
 ## Original Source Files
