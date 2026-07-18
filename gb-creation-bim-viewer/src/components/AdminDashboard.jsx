@@ -3,6 +3,7 @@ import authService from '../services/authService.js';
 import sensorDataManager from '../services/sensorDataManager.js';
 import DashboardSettings from './DashboardSettings';
 import SensorManagement from './SensorManagement.jsx';
+import ModalOverlay from './ModalOverlay.jsx';
 
 /**
  * Admin Dashboard - Full System Management
@@ -411,28 +412,7 @@ const AdminDashboard = () => {
 
       {/* Add User Modal */}
       {showAddUser && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.7)',
-          backdropFilter: 'blur(5px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div className="glass-panel" style={{
-            padding: '30px',
-            borderRadius: 'var(--radius-lg)',
-            width: '400px',
-            maxHeight: '80vh',
-            overflowY: 'auto',
-            border: '1px solid var(--border-glass)',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-          }}>
+        <ModalOverlay onClose={() => setShowAddUser(false)} width="400px">
             <h3 style={{ color: 'var(--text-main)', marginTop: 0 }}>Add New User</h3>
             <form onSubmit={handleCreateUser}>
               <div style={{ marginBottom: '15px' }}>
@@ -572,34 +552,12 @@ const AdminDashboard = () => {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+        </ModalOverlay>
       )}
 
       {/* Edit User Modal */}
       {showEditUser && editingUser && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.7)',
-          backdropFilter: 'blur(5px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000
-        }}>
-          <div className="glass-panel" style={{
-            padding: '30px',
-            borderRadius: 'var(--radius-lg)',
-            width: '400px',
-            maxHeight: '80vh',
-            overflowY: 'auto',
-            border: '1px solid var(--border-glass)',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-          }}>
+        <ModalOverlay onClose={() => { setShowEditUser(false); setEditingUser(null); }} width="400px">
             <h3 style={{ color: 'var(--text-main)', marginTop: 0 }}>Edit User: {editingUser.username}</h3>
             <form onSubmit={handleUpdateUser}>
               <div style={{ marginBottom: '15px' }}>
@@ -758,8 +716,7 @@ const AdminDashboard = () => {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+        </ModalOverlay>
       )}
         </>
       )}

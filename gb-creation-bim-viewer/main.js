@@ -916,10 +916,8 @@ const button = BUI.Component.create(() => {
   return BUI.html`
       <bim-button class="phone-menu-toggler" icon="solar:settings-bold"
         @click="${() => {
-          if (panel.classList.contains("options-menu-visible")) {
-            panel.classList.remove("options-menu-visible");
-          } else {
-            panel.classList.add("options-menu-visible");
+          if (window.viewer3D && window.viewer3D.toggleBIMPanel) {
+            window.viewer3D.toggleBIMPanel();
           }
         }}">
       </bim-button>
@@ -1236,20 +1234,7 @@ window.viewer3D = {
   
   // Show/hide BIM controls
   showBIMControls: function(show = true) {
-    if (panelLeft) {
-      if (show) {
-        panelLeft.style.display = 'block';
-      } else {
-        panelLeft.style.display = 'none';
-      }
-    }
-    if (panelRight) {
-      if (show) {
-        panelRight.style.display = 'block';
-      } else {
-        panelRight.style.display = 'none';
-      }
-    }
+    document.body.classList.toggle('bim-controls-visible', show);
     if (button) {
       button.style.display = show ? 'block' : 'none';
     }
@@ -1260,20 +1245,7 @@ window.viewer3D = {
   
   // Toggle BIM panel visibility
   toggleBIMPanel: function() {
-    if (panelLeft) {
-      if (panelLeft.classList.contains("options-menu-visible")) {
-        panelLeft.classList.remove("options-menu-visible");
-      } else {
-        panelLeft.classList.add("options-menu-visible");
-      }
-    }
-    if (panelRight) {
-      if (panelRight.classList.contains("options-menu-visible")) {
-        panelRight.classList.remove("options-menu-visible");
-      } else {
-        panelRight.classList.add("options-menu-visible");
-      }
-    }
+    document.body.classList.toggle('bim-controls-visible');
   }
 };
 

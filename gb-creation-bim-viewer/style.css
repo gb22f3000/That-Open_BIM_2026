@@ -27,13 +27,17 @@
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Ensure root takes full space and handles stacking */
+/* Ensure root takes full space; allow body-level BIM UI popups to receive clicks */
 #root {
   width: 100vw;
   height: 100vh;
   position: relative;
-  z-index: 10; /* Above the legacy container */
-  pointer-events: auto; /* Ensure clicks work */
+  z-index: 1;
+  pointer-events: none;
+}
+
+#root * {
+  pointer-events: auto;
 }
 
 /* Legacy container from main.js */
@@ -168,51 +172,44 @@ body {
 }
 
 /* BIM Controls - Fixed Split Layout */
-.bim-controls-left {
+.bim-controls-left,
+.bim-controls-right {
   position: fixed !important;
-  left: 80px !important;
   top: 80px !important;
   bottom: 20px !important;
-  width: 320px !important;
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px) !important;
   border: 2px solid #e5e7eb !important;
   border-radius: 12px !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  z-index: 998 !important;
+  z-index: 10000 !important;
   display: none !important;
-  overflow-y: auto !important;
+  overflow: visible !important;
   color: #0f172a !important;
+  max-height: calc(100vh - 100px) !important;
+}
+
+.bim-controls-left {
+  left: 80px !important;
+  width: 320px !important;
 }
 
 .bim-controls-right {
-  position: fixed !important;
   right: 20px !important;
-  top: 80px !important;
-  bottom: 20px !important;
   width: 380px !important;
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 2px solid #e5e7eb !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  z-index: 998 !important;
-  display: none !important;
-  overflow-y: auto !important;
-  color: #0f172a !important;
 }
 
-.bim-controls-visible .bim-controls-left,
-.bim-controls-visible .bim-controls-right {
+body.bim-controls-visible .bim-controls-left,
+body.bim-controls-visible .bim-controls-right {
   display: block !important;
 }
 
 .bim-controls-left bim-panel-section,
 .bim-controls-right bim-panel-section {
   background: #f8f9fa !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 8px !important;
   border-radius: 8px !important;
-  padding: 12px !important;
+  flex-shrink: 0 !important;
 }
 
 .bim-controls-left bim-label,
@@ -262,6 +259,36 @@ body {
 
 .options-menu-visible {
   display: block !important;
+}
+
+/* That Open UI context menus, dropdowns, and color pickers */
+dialog[data-context-dialog] {
+  z-index: 10050 !important;
+  overflow: visible !important;
+}
+
+bim-context-menu {
+  z-index: 10051 !important;
+}
+
+/* React modals rendered via portal */
+.app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10050;
+  padding: 20px;
+}
+
+.app-modal-content {
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .phone-menu-toggler {
